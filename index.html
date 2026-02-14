@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>競艇予想アプリ（PWA）</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <h1>競艇予想アプリ（PWA）</h1>
+
+  <!-- 競艇場選択 -->
+  <label for="jcd">競艇場：</label>
+  <select id="jcd">
+    <option value="01">桐生</option>
+    <option value="02">戸田</option>
+    <option value="03">江戸川</option>
+    <option value="04">平和島</option>
+    <option value="05">多摩川</option>
+    <option value="06">浜名湖</option>
+    <option value="07">蒲郡</option>
+    <option value="08">常滑</option>
+    <option value="09">津</option>
+    <option value="10">三国</option>
+    <option value="11">びわこ</option>
+    <option value="12">住之江</option>
+    <option value="13">尼崎</option>
+    <option value="14">鳴門</option>
+    <option value="15">丸亀</option>
+    <option value="16">児島</option>
+    <option value="17">宮島</option>
+    <option value="18">徳山</option>
+    <option value="19">下関</option>
+    <option value="20">若松</option>
+    <option value="21">芦屋</option>
+    <option value="22">福岡</option>
+    <option value="23">唐津</option>
+    <option value="24">大村</option>
+  </select>
+
+  <br><br>
+
+  <!-- レース番号 -->
+  <label for="rno">レース番号：</label>
+  <select id="rno">
+    <option value="1">1R</option>
+    <option value="2">2R</option>
+    <option value="3">3R</option>
+    <option value="4">4R</option>
+    <option value="5">5R</option>
+    <option value="6">6R</option>
+    <option value="7">7R</option>
+    <option value="8">8R</option>
+    <option value="9">9R</option>
+    <option value="10">10R</option>
+    <option value="11">11R</option>
+    <option value="12">12R</option>
+  </select>
+
+  <br><br>
+
+  <!-- 日付 -->
+  <label for="date">日付：</label>
+  <input type="date" id="date">
+
+  <br><br>
+
+  <!-- ボタン -->
+  <button id="getBeforeInfo">直前情報を取得</button>
+
+  <br><br>
+
+  <!-- 結果 -->
+  <div id="result"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
