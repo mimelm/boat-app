@@ -2,16 +2,22 @@
 // ① 出走表取得（racelist）
 // ===============================
 
+const res = await fetch(url);
 // 出走表ページを取得
 async function fetchRaceList(jcd, date) {
-  const url = `https://www.boatrace.jp/owpc/pc/race/racelist?jcd=${jcd}&hd=${date}`;
-  const res = await fetch(url);
-  const html = await res.text();
+  const proxy = "https://boat-app.vfb03106.workers.dev/?url=";
 
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(html, "text/html");
+  // 本来アクセスしたい URL
+  const targetUrl = `https://www.boatrace.jp/owpc/pc/race/racelist?jcd=${jcd}&hd=${date}`;
 
-  return doc;
+  // プロキシ経由でアクセスするためにエンコード
+  const url = proxy + encodeURIComponent(targetUrl);
+
+  const response = await fetch(url);
+  const html = await response.text();
+
+  return html;
+}
 }
 
 // 出走表をパース（枠番＋選手名）
@@ -34,14 +40,15 @@ function parseRaceList(doc) {
 
 // ボタン押下で出走表を取得
 document.getElementById("getRaceList").addEventListener("click", async () => {
-  console.log("getRaceList ボタン押された");
   const jcd = document.getElementById("jcd").value;
-  const date = document.getElementById("date").value.replace(/-/g, "");
+  const date = document.getElementById("date").value;
 
-  const doc = await fetchRaceList(jcd, date);
-  const list = parseRaceList(doc);
+  console.log("取得開始");
 
-  document.getElementById("result").innerText = JSON.stringify(list, null, 2);
+  const html = await fetchRaceList(jcd, date);
+
+  console.log("取得完了");
+  console.log(html); // HTML がちゃんと取れているか確認
 });
 
 
