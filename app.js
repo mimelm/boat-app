@@ -2,7 +2,6 @@
 // ① 出走表取得（racelist）
 // ===============================
 
-const res = await fetch(url);
 // 出走表ページを取得
 async function fetchRaceList(jcd, date) {
   const proxy = "https://boat-app.vfb03106.workers.dev/?url=";
@@ -65,10 +64,13 @@ document.getElementById("getBeforeInfo").addEventListener("click", async () => {
 });
 
 async function fetchBeforeInfo(jcd, rno, date) {
-  const url = `https://www.boatrace.jp/owpc/pc/race/beforeinfo?jcd=${jcd}&rno=${rno}&hd=${date}`;
+  const proxy = "https://boat-app.vfb03106.workers.dev/?url=";
+
+  const targetUrl = `https://www.boatrace.jp/owpc/pc/race/beforeinfo?jcd=${jcd}&rno=${rno}&hd=${date}`;
+  const url = proxy + encodeURIComponent(targetUrl);
+
   const res = await fetch(url);
   const html = await res.text();
-
   const parser = new DOMParser();
   const doc = parser.parseFromString(html, "text/html");
 
