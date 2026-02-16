@@ -18,7 +18,6 @@ async function fetchRaceList(jcd, date) {
 
   return html;
 }
-}
 
 // 出走表をパース（枠番＋選手名）
 function parseRaceList(doc) {
