@@ -34,6 +34,7 @@ function parseRaceList(doc) {
 
 // ボタン押下で出走表を取得
 document.getElementById("getRaceList").addEventListener("click", async () => {
+  console.log("getRaceList ボタン押された");
   const jcd = document.getElementById("jcd").value;
   const date = document.getElementById("date").value.replace(/-/g, "");
 
